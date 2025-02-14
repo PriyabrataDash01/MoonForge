@@ -1,0 +1,300 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --black-space: #030305;
+    --deep-void: #0A0A0F;
+    --cosmic-gray: #1A1A20;
+    --stellar-white: #F8F9FF;
+    --accent-primary: #6366F1;
+    --accent-secondary: #8B5CF6;
+  }
+
+  body {
+    @apply bg-[var(--black-space)] text-[var(--stellar-white)] cursor-none;
+    background-image: 
+      radial-gradient(circle at 50% 0%, var(--cosmic-gray) 0%, transparent 50%),
+      radial-gradient(circle at 0% 100%, var(--deep-void) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  /* Modern Typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight relative;
+  }
+}
+
+/* Depth Effects */
+.depth-card {
+  @apply relative overflow-hidden rounded-xl backdrop-blur-md;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.03) 0%,
+    rgba(255,255,255,0.01) 100%
+  );
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 
+    0 4px 6px -1px rgba(0,0,0,0.5),
+    0 2px 4px -1px rgba(0,0,0,0.06);
+}
+
+/* Accent Glow */
+.accent-glow {
+  @apply relative;
+}
+
+.accent-glow::before {
+  content: '';
+  @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+  background: radial-gradient(
+    circle at center,
+    var(--accent-primary) 0%,
+    transparent 70%
+  );
+  filter: blur(20px);
+}
+
+.accent-glow:hover::before {
+  @apply opacity-10;
+}
+
+/* Interactive Elements */
+.interactive-element {
+  @apply transition-all duration-300 ease-out;
+  background: linear-gradient(
+    135deg,
+    rgba(99,102,241,0.1) 0%,
+    rgba(139,92,246,0.1) 100%
+  );
+}
+
+.interactive-element:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(99,102,241,0.15) 0%,
+    rgba(139,92,246,0.15) 100%
+  );
+  transform: translateY(-1px);
+}
+
+/* Navigation Styles */
+.nav-item {
+  @apply relative px-4 py-2 rounded-lg transition-all duration-300;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 100%
+  );
+}
+
+.nav-item:hover {
+  background: linear-gradient(
+    to right,
+    rgba(99,102,241,0.1) 0%,
+    rgba(139,92,246,0.1) 100%
+  );
+}
+
+.nav-item.active {
+  background: linear-gradient(
+    to right,
+    rgba(99,102,241,0.2) 0%,
+    rgba(139,92,246,0.2) 100%
+  );
+}
+
+/* Smooth Transitions */
+.smooth-transition {
+  @apply transition-all duration-500;
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Luminous heading effect */
+h1::after,
+h2::after,
+h3::after,
+h4::after,
+h5::after,
+h6::after {
+  content: '';
+  @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+  background: radial-gradient(
+    circle at center,
+    var(--accent-primary) 0%,
+    transparent 70%
+  );
+  filter: blur(20px);
+  z-index: -1;
+}
+
+h1:hover::after,
+h2:hover::after,
+h3:hover::after,
+h4:hover::after,
+h5:hover::after,
+h6:hover::after {
+  @apply opacity-20;
+}
+
+/* Enhanced starfield animation */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.8; }
+}
+
+.star {
+  @apply absolute rounded-full bg-white;
+  animation: twinkle 3s infinite;
+}
+
+/* Enhanced particle animation */
+@keyframes float-particle {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  25% {
+    transform: translate(10px, -10px) scale(1.5);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(20px, 0) scale(1);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(10px, 10px) scale(1.5);
+    opacity: 1;
+  }
+}
+
+/* Enhanced perspective effect */
+.perspective {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.perspective:hover {
+  transform: perspective(1000px) rotateY(5deg);
+}
+
+/* Smooth transitions */
+.smooth-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Card 3D effect */
+.card-3d {
+  @apply relative transition-transform duration-300 ease-out;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+}
+
+.card-3d:hover {
+  transform: perspective(1000px) translateZ(10px);
+}
+
+.card-content {
+  @apply relative;
+  transform-style: preserve-3d;
+}
+
+/* Glow Effects */
+.glow {
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+}
+
+.glow-hover {
+  @apply transition-all duration-300;
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+}
+
+/* Floating Animation */
+.float {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Points earned animation */
+@keyframes highlight {
+  0% {
+    background-color: rgba(99, 102, 241, 0.3);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.animate-highlight {
+  animation: highlight 2s ease-out forwards;
+}
+
+.points-earned-indicator {
+  @apply absolute -inset-2 scale-105 opacity-0;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+  animation: pulse 2s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Parallax effect */
+.parallax {
+  transform: translateZ(0);
+  transition: transform 0.3s ease-out;
+}
+
+.parallax:hover {
+  transform: translateZ(20px);
+}
+
+/* Smooth section transitions */
+.section-transition {
+  @apply transition-all duration-500 ease-in-out;
+}
+
+/* Social icon hover effects */
+.social-icon {
+  @apply transition-transform duration-300;
+}
+
+.social-icon:hover {
+  transform: translateY(-2px) scale(1.1);
+}
